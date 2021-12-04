@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    text-align: center;
+}
+h1{
+    margin: 3rem;
+    font-size: 3rem;
+}
+h3{
+    margin: 2rem;
+    font-size: 2rem;
+}
+input{
+    width: 16rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+button{
+    padding: 0.5rem 1rem;
+    width: 8rem;
+    font-size: 1.5rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+
+.output{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
