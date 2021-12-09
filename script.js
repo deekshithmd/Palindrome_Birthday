@@ -138,7 +138,9 @@ function getNextPalindromeDate(date){
 function check(){
     var dat=datev.value;
     if(dat != ''){
+        //console.log(dat)
         dateList=dat.split('-')
+        //console.log(dateList)
         var date={
          day: Number(dateList[2]),
          month: Number(dateList[1]),
