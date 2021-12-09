@@ -135,6 +135,55 @@ function getNextPalindromeDate(date){
 
 }
 
+function getPrevDate(date){
+    var day=date.day-1
+    var month=date.month
+    var year=date.year
+    noofDaysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
+    if(day===0){
+        month--
+
+        if(month===0){
+            month=12
+            day=31
+            year--
+        }
+        else if(month===2){
+            if(isLeapYear(year)){
+                day=29
+            }
+            else{
+                day=28
+                }
+        }
+        else{
+            day=noofDaysInMonth[month-1]
+        }
+    }
+    
+    return {
+        day:day,
+        month:month,
+        year:year
+    }
+}
+
+function getPreviousPalindromeDate(date){
+    var nodays=0
+    var prevDate=getPrevDate(date)
+    while(1){
+        nodays++
+        var result=checkPalindromeForAllDateFormats(prevDate)
+        if(result===true)
+            break
+
+        prevDate=gePrevDate(prevDate)
+    }
+
+    return [nodays, prevDate]
+
+}
+
 function check(){
     var dat=datev.value;
     if(dat != ''){
@@ -154,7 +203,11 @@ function check(){
         }
         else{
             var [nodays,nextDate]=getNextPalindromeDate(date)
-            output.innerText="Your birthday is not palindrome...nearest next date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
+            var [ndays,prevDate]=getPreviousPalindromeDate(date)
+            if(nodays<ndays)
+                output.innerText="Your birthday is not palindrome...nearest next date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
+            else
+                output.innerText="Your birthday is not palindrome...nearest previous date is "+ prevDate.day+"-"+prevDate.month+"-"+prevDate.year+" you missed by "+ndays+" days"
         }
     }
 }
