@@ -207,9 +207,9 @@ function check(){
             console.log(nodays)
             console.log(ndays)
             if(nodays < ndays)
-                output.innerText="Your birthday is not palindrome...nearest next date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
+                output.innerText="Your birthday is not palindrome...nearest next palindrome date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
             else
-                output.innerText="Your birthday is not palindrome...nearest previous date is "+ preDate.day+"-"+preDate.month+"-"+preDate.year+" you missed by "+ndays+" days"
+                output.innerText="Your birthday is not palindrome...nearest previous palindrome date is "+ preDate.day+"-"+preDate.month+"-"+preDate.year+" you missed by "+ndays+" days"
         }
     }
 }

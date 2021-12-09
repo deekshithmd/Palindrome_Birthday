@@ -46,6 +46,11 @@ button:hover{
     font-weight: 600;
     color: rgb(18, 32, 92);
     background-color: white;
+    width:fit-content;
+    margin: auto;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 footer{
