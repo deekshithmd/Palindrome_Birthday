@@ -177,7 +177,7 @@ function getPreviousPalindromeDate(date){
         if(result===true)
             break
 
-        prevDate=gePrevDate(prevDate)
+        prevDate=getPrevDate(prevDate)
     }
 
     return [nodays, prevDate]
@@ -203,11 +203,13 @@ function check(){
         }
         else{
             var [nodays,nextDate]=getNextPalindromeDate(date)
-            var [ndays,prevDate]=getPreviousPalindromeDate(date)
-            if(nodays<ndays)
+            var [ndays,preDate]=getPreviousPalindromeDate(date)
+            console.log(nodays)
+            console.log(ndays)
+            if(nodays < ndays)
                 output.innerText="Your birthday is not palindrome...nearest next date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
             else
-                output.innerText="Your birthday is not palindrome...nearest previous date is "+ prevDate.day+"-"+prevDate.month+"-"+prevDate.year+" you missed by "+ndays+" days"
+                output.innerText="Your birthday is not palindrome...nearest previous date is "+ preDate.day+"-"+preDate.month+"-"+preDate.year+" you missed by "+ndays+" days"
         }
     }
 }
