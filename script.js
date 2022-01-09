@@ -1,24 +1,24 @@
-var datev = document.querySelector("#input-date")
-var button = document.querySelector(".check")
-var output = document.querySelector(".output")
+const datev = document.querySelector("#input-date")
+const button = document.querySelector(".check")
+const output = document.querySelector(".output")
 
-function reverseStr(str){
-    var charList=str.split('')
-    var reversedChars=charList.reverse()
-    var reversedStr=reversedChars.join('')
+const reverseStr= str =>{
+    const charList=str.split('')
+    const reversedChars=charList.reverse()
+    const reversedStr=reversedChars.join('')
     return reversedStr;
 }
 
-function isPalindrome(str){
-    var revrse=reverseStr(str)
+const isPalindrome = str =>{
+    const revrse=reverseStr(str)
     if(str==revrse)
         return true
     else
         return false
     }
 
-function convertDatetoStr(date){
-    var dateStr={day:'',
+const convertDatetoStr = date=>{
+   let dateStr={day:'',
                 month:'',
                 year:''
                 }
@@ -42,21 +42,21 @@ function convertDatetoStr(date){
     return dateStr
 }
 
-function getAllDateFormats(date){
+const getAllDateFormats = date =>{
     dateStr=convertDatetoStr(date)
 
-    var ddmmyyyy=dateStr.day+dateStr.month+dateStr.year
-    var mmddyyyy=dateStr.month+dateStr.day+dateStr.year
-    var yyyymmdd=dateStr.year+dateStr.month+dateStr.day
-    var ddmmyy=dateStr.day+dateStr.month+dateStr.year.slice(-2)
-    var mmddyy=dateStr.month+dateStr.day+dateStr.year.slice(-2)
-    var yymmdd=dateStr.year.slice(-2)+dateStr.month+dateStr.day
+    const ddmmyyyy=dateStr.day+dateStr.month+dateStr.year
+    const mmddyyyy=dateStr.month+dateStr.day+dateStr.year
+    const yyyymmdd=dateStr.year+dateStr.month+dateStr.day
+    const ddmmyy=dateStr.day+dateStr.month+dateStr.year.slice(-2)
+    const mmddyy=dateStr.month+dateStr.day+dateStr.year.slice(-2)
+    const yymmdd=dateStr.year.slice(-2)+dateStr.month+dateStr.day
 
     return[ddmmyyyy,mmddyyyy,yyyymmdd,ddmmyy,mmddyy,yymmdd]
 }
 
-function checkPalindromeForAllDateFormats(date){
-    var listofPalindrome=getAllDateFormats(date)
+const checkPalindromeForAllDateFormats = date =>{
+    const listofPalindrome=getAllDateFormats(date)
 
     flag=false
 
@@ -69,7 +69,7 @@ function checkPalindromeForAllDateFormats(date){
 
     return flag
 }
-function isLeapYear(year){
+const isLeapYear = year =>{
     if(year%400 === 0){
         return true
     }
@@ -82,10 +82,10 @@ function isLeapYear(year){
     return false
 }
 
-function getNextDate(date){
-    var day=date.day+1
-    var month=date.month
-    var year=date.year
+const getNextDate = date =>{
+    let day=date.day+1
+    let month=date.month
+    let year=date.year
     noofDaysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
     if(month === 2){
         if(isLeapYear(year)){
@@ -119,9 +119,9 @@ function getNextDate(date){
     }
 }
 
-function getNextPalindromeDate(date){
-    var nodays=0
-    var nextDate=getNextDate(date)
+const getNextPalindromeDate = date =>{
+    let nodays=0
+    let nextDate=getNextDate(date)
     while(1){
         nodays++
         var result=checkPalindromeForAllDateFormats(nextDate)
@@ -135,10 +135,10 @@ function getNextPalindromeDate(date){
 
 }
 
-function getPrevDate(date){
-    var day=date.day-1
-    var month=date.month
-    var year=date.year
+const getPrevDate = date =>{
+    let day=date.day-1
+    let month=date.month
+    let year=date.year
     noofDaysInMonth=[31,28,31,30,31,30,31,31,30,31,30,31]
     if(day===0){
         month--
@@ -168,9 +168,9 @@ function getPrevDate(date){
     }
 }
 
-function getPreviousPalindromeDate(date){
-    var nodays=0
-    var prevDate=getPrevDate(date)
+const getPreviousPalindromeDate = date =>{
+    let nodays=0
+    let prevDate=getPrevDate(date)
     while(1){
         nodays++
         var result=checkPalindromeForAllDateFormats(prevDate)
@@ -184,8 +184,8 @@ function getPreviousPalindromeDate(date){
 
 }
 
-function check(){
-    var dat=datev.value;
+const check = () =>{
+    const dat=datev.value;
     if(dat != ''){
         //console.log(dat)
         dateList=dat.split('-')
@@ -199,17 +199,17 @@ function check(){
         //console.log(palindrome)
 
         if(palindrome==true){
-            output.innerText="Yes...Your birthday is palindrome"
+            output.innerText=`Yes...Your birthday is palindrome`
         }
         else{
-            var [nodays,nextDate]=getNextPalindromeDate(date)
-            var [ndays,preDate]=getPreviousPalindromeDate(date)
+            const [nodays,nextDate]=getNextPalindromeDate(date)
+            const [ndays,preDate]=getPreviousPalindromeDate(date)
             console.log(nodays)
             console.log(ndays)
             if(nodays < ndays)
-                output.innerText="Your birthday is not palindrome...nearest next palindrome date is "+ nextDate.day+"-"+nextDate.month+"-"+nextDate.year+" you missed by "+nodays+" days"
+                output.innerText=`Your birthday is not palindrome...nearest next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year} you missed by ${nodays} days`
             else
-                output.innerText="Your birthday is not palindrome...nearest previous palindrome date is "+ preDate.day+"-"+preDate.month+"-"+preDate.year+" you missed by "+ndays+" days"
+                output.innerText=`Your birthday is not palindrome...nearest previous palindrome date is ${preDate.day}-${preDate.month}-${preDate.year} you missed by ${ndays} days`
         }
     }
 }
